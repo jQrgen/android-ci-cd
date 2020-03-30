@@ -33,7 +33,7 @@ RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "build-tools;${AND
 # RUN echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
 # RUN echo -e "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "${ANDROID_HOME}/licenses/intel-android-extra-license"
 # install Fastlane
-COPY Gemfile.lock .
-COPY Gemfile .
+# COPY Gemfile.lock .
+# COPY Gemfile .
 RUN gem install bundle
-RUN bundle install
+# RUN bundle install
