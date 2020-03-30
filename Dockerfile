@@ -22,6 +22,7 @@ RUN unzip -d $ANDROID_HOME android-sdk.zip
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
+RUN sudo gem install fastlane -NV
 # RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 # RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager update sdk --no-ui --all --filter platform-tools
 # RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager  --silent update sdk --no-ui --all --filter build-tools-${ANDROID_BUILD_TOOLS}
@@ -35,5 +36,5 @@ RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "build-tools;${AND
 # install Fastlane
 # COPY Gemfile.lock .
 # COPY Gemfile .
-RUN gem install bundle
+# RUN gem install bundle
 # RUN bundle install
