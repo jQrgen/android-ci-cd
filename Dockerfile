@@ -32,9 +32,11 @@ RUN wget  --output-document=firebase-tools-linux https://github.com/firebase/fir
 RUN chmod +x firebase-tools-linux
 
 # Install fastlane and other gems
+# COPY Gemfile.lock .
+# COPY Gemfile .
 RUN gem install fastlane -NV
-RUN gem install bundle
-RUN bundle install
+# RUN gem install bundle
+# RUN bundle install
 
 #RUN wget --output-document=firebase-tools https://firebase.tools/bin/linux/latest
 #RUN chmod +x ./firebase-tools
