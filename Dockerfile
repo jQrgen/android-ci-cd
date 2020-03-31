@@ -16,13 +16,21 @@ RUN apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 build-esse
 # We use this for xxd hex->binary
 RUN apt-get --quiet install --yes vim-common
 # install Android SDK
-# RUN wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/android-sdk_r${ANDROID_SDK_TOOLS}-linux.tgz
 RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
 RUN unzip -d $ANDROID_HOME android-sdk.zip
+RUN rm android-sdk.zip
+
+# Accept SDK lisences.
+RUN echo y | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}"
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
 RUN sudo gem install fastlane -NV
+
+# Firebase-tools setup
+ADD https://github.com/firebase/firebase-tools/releases/download/v7.3.1/firebase-tools-linux firebase-tools
+RUN chmod +x firebase-tools
+
 # RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 # RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager update sdk --no-ui --all --filter platform-tools
 # RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager  --silent update sdk --no-ui --all --filter build-tools-${ANDROID_BUILD_TOOLS}
