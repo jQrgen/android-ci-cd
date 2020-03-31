@@ -35,6 +35,7 @@ RUN chmod +x firebase-tools-linux
 # COPY Gemfile.lock .
 # COPY Gemfile .
 RUN gem install fastlane -NV
+RUN gem install fastlane-plugin-firebase_app_distribution -NV
 # RUN gem install bundle
 # RUN bundle install
 
