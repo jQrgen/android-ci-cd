@@ -29,7 +29,7 @@ RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "build-tools;${AND
 RUN gem install fastlane -NV
 
 # Firebase-tools setup
-RUN wget https://github.com/firebase/firebase-tools/releases/download/v7.16.2/firebase-tools-linux firebase-tools-linux
+RUN wget  --output-document=firebase-tools-linux https://github.com/firebase/firebase-tools/releases/download/v7.16.2/firebase-tools-linux
 RUN chmod +x firebase-tools-linux
 
 #RUN wget --output-document=firebase-tools https://firebase.tools/bin/linux/latest
