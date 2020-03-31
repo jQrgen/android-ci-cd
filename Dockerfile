@@ -8,7 +8,7 @@ ENV ANDROID_BUILD_TOOLS "29.0.2"
 ENV ANDROID_SDK_TOOLS "4333796"
 
 ENV ANDROID_HOME /android-sdk-linux
-ENV PATH="${PATH}:/android-sdk-linux/platform-tools/"
+ENV PATH="${PATH}:${ANDROID_HOME}/platform-tools/"
 
 # install OS packages
 RUN apt-get --quiet update --yes
