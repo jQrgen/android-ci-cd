@@ -9,6 +9,7 @@ ENV ANDROID_SDK_TOOLS "4333796"
 
 ENV ANDROID_HOME /android-sdk-linux
 ENV PATH="${PATH}:${ANDROID_HOME}/platform-tools/"
+ENV FIREBASE_HOME = /firebase
 
 # install OS packages
 RUN apt-get --quiet update --yes
@@ -28,8 +29,11 @@ RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "build-tools;${AND
 RUN gem install fastlane -NV
 
 # Firebase-tools setup
-RUN wget --output-document=firebase-tools https://firebase.tools/bin/linux/latest
-RUN chmod +x ./firebase-tools
+RUN wget https://github.com/firebase/firebase-tools/releases/download/v7.16.2/firebase-tools-linux firebase-tools-linux
+RUN chmod +x firebase-tools-linux
+
+#RUN wget --output-document=firebase-tools https://firebase.tools/bin/linux/latest
+#RUN chmod +x ./firebase-tools
 
 #RUN curl -sL https://firebase.tools | bash
 #ADD https://github.com/firebase/firebase-tools/releases/download/v7.3.1/firebase-tools-linux firebase-tools
