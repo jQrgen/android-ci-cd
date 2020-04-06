@@ -32,32 +32,5 @@ RUN wget  --output-document=firebase-tools-linux https://github.com/firebase/fir
 RUN chmod +x firebase-tools-linux
 
 # Install fastlane and other gems
-# COPY Gemfile.lock .
-# COPY Gemfile .
 RUN gem install fastlane -NV
 RUN gem install fastlane-plugin-firebase_app_distribution -NV
-# RUN gem install bundle
-# RUN bundle install
-
-#RUN wget --output-document=firebase-tools https://firebase.tools/bin/linux/latest
-#RUN chmod +x ./firebase-tools
-
-#RUN curl -sL https://firebase.tools | bash
-#ADD https://github.com/firebase/firebase-tools/releases/download/v7.3.1/firebase-tools-linux firebase-tools
-#RUN chmod +x firebase-tools
-
-# RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-# RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager update sdk --no-ui --all --filter platform-tools
-# RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager  --silent update sdk --no-ui --all --filter build-tools-${ANDROID_BUILD_TOOLS}
-# RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager  --silent update sdk --no-ui --all --filter extra-android-m2repository
-# RUN echo y | android-sdk-linux/tools/bin/sdkmanager  --silent update sdk --no-ui --all --filter extra-google-google_play_services
-# RUN echo y | android-sdk-linux/tools/bin/sdkmanager  --silent update sdk --no-ui --all --filter extra-google-m2repository
-# RUN mkdir -p "${ANDROID_HOME}/licenses"
-# RUN echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "${ANDROID_HOME}/licenses/android-sdk-license"
-# RUN echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
-# RUN echo -e "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "${ANDROID_HOME}/licenses/intel-android-extra-license"
-# install Fastlane
-# COPY Gemfile.lock .
-# COPY Gemfile .
-# RUN gem install bundle
-# RUN bundle install
