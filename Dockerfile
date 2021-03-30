@@ -21,7 +21,13 @@ RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android
 RUN unzip -d $ANDROID_HOME android-sdk.zip
 RUN rm android-sdk.zip
 
-# Accept SDK lisences.
+# Jacaco test coverage report dependencies
+RUN apt-get --quiet install --yes libxml2-dev libxslt-dev python3 python3-dev gcc build-essential python3-pip
+RUN pip3 install lxml
+COPY cover2cover.py /opt/cover2cover.py
+COPY source2filename.py /opt/source2filename.py
+
+# Accept android SDK lisences.
 RUN echo y | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}"
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
 RUN echo y | $SDK_PATH/android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
