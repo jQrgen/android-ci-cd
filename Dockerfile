@@ -32,5 +32,6 @@ RUN wget  --output-document=firebase-tools-linux https://github.com/firebase/fir
 RUN chmod +x firebase-tools-linux
 
 # Install fastlane and other gems
+RUN gem install rake
 RUN gem install fastlane -NV
 RUN gem install fastlane-plugin-firebase_app_distribution -NV
